@@ -48,7 +48,8 @@ export class PhotosController {
   }
 
   @ApiOperation({
-    summary: 'Find secret photos',
+    summary:
+      'Find secret photos /auth/login에서 발급받은 토큰을 헤더에 Bearer 방식으로 넣어줘야 합니다.',
   })
   @ApiBearerAuth('JWT-auth')
   @UseGuards(JwtAuthGuard)
