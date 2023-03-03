@@ -1,6 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class AccessToken {
+  @ApiProperty({
+    default: '엄청 긴 문자열',
+    description: '액세스 토큰. 만료 기간은 30분',
+  })
   access_token: string;
 }
 

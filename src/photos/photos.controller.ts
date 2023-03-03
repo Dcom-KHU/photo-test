@@ -17,6 +17,7 @@ import {
   ApiBearerAuth,
   ApiNotAcceptableResponse,
   ApiOperation,
+  ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
 import { ApiImplicitQuery } from '@nestjs/swagger/dist/decorators/api-implicit-query.decorator';
@@ -40,6 +41,12 @@ export class PhotosController {
     description: '올바르지 않은 필터인 경우',
     type: NotAcceptableException,
   })
+  @ApiResponse({
+    status: 200,
+    description: '정상 응답',
+    type: Photo,
+    isArray: true,
+  })
   @Get()
   async findAll(
     @Query('filter', new PhotoFilterValidationPipe()) photoFilter: PhotoFilter,
@@ -52,6 +59,12 @@ export class PhotosController {
       'Find secret photos /auth/login에서 발급받은 토큰을 헤더에 Bearer 방식으로 넣어줘야 합니다.',
   })
   @ApiBearerAuth('JWT-auth')
+  @ApiResponse({
+    status: 200,
+    description: '정상 응답',
+    type: Photo,
+    isArray: true,
+  })
   @UseGuards(JwtAuthGuard)
   @Get('secret')
   async findAllSecret(): Promise<Photo[]> {

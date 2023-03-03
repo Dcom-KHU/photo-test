@@ -15,11 +15,12 @@ import {
 import {
   ApiNotAcceptableResponse,
   ApiOperation,
+  ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
 
 import { AuthService } from './auth.service';
-import { User } from './entities/auth.entity';
+import { AccessToken, User } from './entities/auth.entity';
 import { ApiImplicitQuery } from '@nestjs/swagger/dist/decorators/api-implicit-query.decorator';
 
 @ApiTags('Auth')
@@ -29,6 +30,11 @@ export class AuthController {
 
   @ApiOperation({
     summary: 'mockup login',
+  })
+  @ApiResponse({
+    status: 201,
+    description: '토큰 생성 성공',
+    type: AccessToken,
   })
   @Post('/login')
   async login(@Body() user: User) {

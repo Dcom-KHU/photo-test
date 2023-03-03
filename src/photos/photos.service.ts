@@ -15,6 +15,7 @@ export class PhotosService {
       },
     });
     const body = await res.json();
+    // @ts-ignore
     return body.photos.map((photo) => new Photo(photo));
   }
 
@@ -26,6 +27,7 @@ export class PhotosService {
       },
     });
     const body = await res.json();
+    // @ts-ignore
     return body.photos.map((photo) => new Photo(photo));
   }
 }
