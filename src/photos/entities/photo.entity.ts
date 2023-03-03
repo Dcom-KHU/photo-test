@@ -1,9 +1,26 @@
+import { ApiProperty } from '@nestjs/swagger';
+
 export type PhotoFilter = undefined | 'cat' | 'dog' | 'dog cat';
 export class Photo {
+  @ApiProperty({
+    description: '사진 웹사이트 경로',
+  })
   url: string;
+  @ApiProperty({
+    description: 'alt 문구',
+  })
   alt: string;
+  @ApiProperty({
+    description: '사진 작가 이름',
+  })
   photographer: string;
+  @ApiProperty({
+    description: '사진 작가 프로필 경로',
+  })
   photographer_url: string;
+  @ApiProperty({
+    description: '사진 소스',
+  })
   src: PhotoSrc;
   constructor(data: any) {
     this.url = data.url;
