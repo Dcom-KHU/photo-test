@@ -3,6 +3,7 @@ export function setEnvironment() {
     case 'dev':
       return ['.env.dev', '.env'];
     case 'prod':
+      return ['.env.prod', '.env'];
     default:
       return '.env';
   }
